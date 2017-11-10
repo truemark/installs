@@ -129,6 +129,7 @@ tasksel tasksel/skip-tasks string standard
 d-i pkgsel/upgrade select full-upgrade
 
 # Install packages
+d-i base-installer/install-recommends boolean false
 d-i pkgsel/include string vim openssh-server ntp open-vm-tools
 
 # No boot splash screen
