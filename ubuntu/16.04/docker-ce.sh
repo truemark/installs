@@ -9,7 +9,7 @@ set -uex
 
 apt-get update
 
-apt-get install \
+apt-get install -y \
   apt-transport-https \
   ca-certificates \
   curl \
@@ -26,6 +26,6 @@ add-apt-repository \
 
 apt-get update
 
-apt-get install docker-ce
+apt-get install -y docker-ce
 
 apt-mark hold docker-ce
