@@ -9,9 +9,9 @@ apt-get update
 
 apt-get install \
   apt-transport-https \
-  ca-cerificates \
+  ca-certificates \
   curl \
-  software-properties-commons
+  software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
 
