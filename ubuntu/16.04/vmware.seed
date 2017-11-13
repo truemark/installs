@@ -130,7 +130,7 @@ d-i pkgsel/upgrade select full-upgrade
 
 # Install packages
 d-i base-installer/install-recommends boolean false
-d-i pkgsel/include string vim openssh-server ntp open-vm-tools
+d-i pkgsel/include string vim openssh-server ntp open-vm-tools curl
 
 # No boot splash screen
 d-i debian-installer/splash boolean false
