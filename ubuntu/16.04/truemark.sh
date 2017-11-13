@@ -1,5 +1,7 @@
 #!/usr/bin/env/bash
 
+set -uex
+
 # Allow user to sudo without a password
 echo "user    ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/truemark
 
