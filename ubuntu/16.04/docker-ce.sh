@@ -2,6 +2,8 @@
 
 # This script will install docker-ce.
 # https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/#install-docker-ce
+# To execute this script run the following as root
+# bash <(curl http://installs.truemark.io/ubuntu/16.04/docker-ce.sh)
 
 set -uex
 
