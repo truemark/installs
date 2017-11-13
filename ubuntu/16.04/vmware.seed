@@ -23,7 +23,7 @@ d-i netcfg/choose_interface select auto
 # Set hostname
 d-i netcfg/get_hostname string unassigned-hostname
 d-i netcfg/get_domain string unassigned-domain
-d-i netcfg/hostname string tmubuntu
+d-i netcfg/hostname string ubuntu
 
 # Account setup
 d-i passwd/user-fullname string Ubuntu User
