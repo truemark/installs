@@ -48,7 +48,6 @@ d-i partman-auto/method string lvm
 d-i partman-auto/purge_lvm_from_device boolean true
 d-i partman-auto-lvm/guided_size string 100%
 d-i partman-auto-lvm/no_boot boolean true
-d-i partman/choose_partition select finish
 
 d-i partman/confirm boolean true
 d-i partman/confirm_nooverwrite boolean true
@@ -117,6 +116,8 @@ boot-root :: \
 	use_filesystem{ } \
 	$default_filesystem{ } \
 	mountpoint{ /home } .
+
+d-i partman/choose_partition select finish
 
 # Install virtual kernel with no headers
 d-i base-installer/kernel/override-image string linux-virtual
