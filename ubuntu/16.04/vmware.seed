@@ -10,6 +10,9 @@
 # https://wiki.ubuntu.com/Enterprise/WorkstationAutoinstallPreseed
 # https://github.com/xobs/debian-installer/blob/master/doc/devel/partman-auto-recipe.txt
 
+# Ask only critical questions
+d-i debconf/priority string critical
+
 # Set language and country
 d-i debian-installer/locale string en_US
 
@@ -119,6 +122,9 @@ boot-root :: \
 	use_filesystem{ } \
 	$default_filesystem{ } \
 	mountpoint{ /home } .
+
+# Install grub on /dev/sda
+d-i grub-installer/bootdev string /dev/sda
 
 # Install virtual kernel with no headers
 d-i base-installer/kernel/override-image string linux-virtual
