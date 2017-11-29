@@ -151,5 +151,5 @@ d-i pkgsel/update-policy select none
 d-i finish-install/reboot_in_progress note
 
 # Set buffers on network interface
-#d-i preseed/late_command string \
-#	in-target sed -i 's/exit 0/\/sbin\/ethtool -G ens192 rx 4096 tx 4096\n&/' etc/rc.local;
+d-i preseed/late_command string \
+	in-target sed -i 's/exit 0/\/sbin\/ethtool -G ens192 rx 4096 tx 4096\n&/' etc/rc.local;
