@@ -14,14 +14,22 @@ set -uex
 DIR=$(dirname ${0})
 cd $DIR
 
+# You must have the Install ISO from oracle in same directory as the script
+if [ ! -f V921569-01.iso]; then
+        echo "Original OL7 Install ISO must be in the same directory as this script"
+        exit 0
+fi
+
 # Get ISO Image
 mkdir -p ISOTMP
+sudo mkdir -p /mnt/cdrom
+cp V921569-01.iso ./ISOTMP/
 cd ISOTMP
-sudo mount -o loop /dev/cdrom /media/cdrom
+sudo mount -o loop V921569-01.iso /mnt/cdrom
 rm -rf image
 mkdir -p image
-rsync -av /media/cdrom/ image/
-sudo umount /media/cdrom
+rsync -av /mnt/cdrom/ image/
+sudo umount /mnt/cdrom
 
 cd image/isolinux
 chmod 755 .
@@ -33,9 +41,9 @@ cd ../../
 sudo find image -type d -exec chmod 755 {} \;
 sudo find image -type f -exec chmod 644 {} \;
 
-mkisofs -r -V "TrueMark Oracle Server with UI Linux Install CD" \
+mkisofs -r -V "TrueMark OL7 UI" \
   -cache-inodes \
   -J -l -b isolinux/isolinux.bin \
   -c isolinux/boot.cat -no-emul-boot \
   -boot-load-size 4 -boot-info-table \
-  -o truemark-OL-7.4-server-with-ui-x86_64.iso image/
+  -o truemark-OL-7.4-ui.iso image/
