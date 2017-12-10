@@ -28,7 +28,7 @@ chmod 755 .
 chmod 644 isolinux.cfg
 sudo sed -i 's/  append initrd=initrd.img inst.stage2=hd:LABEL=OL-7.4\\x20Server.x86_64 rd.live.check quiet/  append initrd=initrd.img inst.ks=http:\/\/installs.truemark.io\/ol\/7\/server-with-ui-ks.cfg inst.txt quiet/' isolinux.cfg
 
-sudo sed -i 's/timeout 6/timeout 0/' isolinux.cfg
+sudo sed -i 's/timeout 600/timeout 1/' isolinux.cfg
 cd ../../
 sudo find image -type d -exec chmod 755 {} \;
 sudo find image -type f -exec chmod 644 {} \;
