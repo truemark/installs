@@ -15,9 +15,9 @@ DIR=$(dirname ${0})
 cd $DIR
 
 # You must have the Install ISO from oracle in same directory as the script
-if [ ! -f V921569-01.iso]; then
+if [ ! -f "V921569-01.iso" ]; then
         echo "Original OL7 Install ISO must be in the same directory as this script"
-        exit 0
+        exit 1
 fi
 
 # Get ISO Image
