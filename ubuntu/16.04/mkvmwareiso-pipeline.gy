@@ -1,5 +1,5 @@
 import groovy.json.JsonSlurperClassic
-node {
+node(truemark) {
 	def jenkinsBuild = "${env.JOB_NAME} <${env.BUILD_URL}|#${env.BUILD_NUMBER}>"
 	def actor = '';
 	if ("${METADATA}"?.trim()) {
@@ -8,7 +8,8 @@ node {
 		actor = "<${meta.actor.url}|${meta.actor.display}>"
 	} else {
 		wrap([$class: 'BuildUser']) {
-		actor = "${BUILD_USER_ID}".replaceAll(/@.*/, "")
+			actor = "${BUILD_USER_ID}".replaceAll(/@.*/, "")
+		}
 	}
 	slackSend channel: "#tm", color: "#cecece", message: "${actor} Job Started: ${jenkinsBuild}"
 	try {
