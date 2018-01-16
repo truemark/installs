@@ -1,5 +1,5 @@
 import groovy.json.JsonSlurperClassic
-node(truemark) {
+node("truemark") {
 	def jenkinsBuild = "${env.JOB_NAME} <${env.BUILD_URL}|#${env.BUILD_NUMBER}>"
 	def actor = '';
 	if ("${METADATA}"?.trim()) {
