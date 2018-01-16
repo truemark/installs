@@ -13,13 +13,10 @@ node {
 	slackSend channel: "#tm", color: "#cecece", message: "${actor} Job Started: ${jenkinsBuild}"
 	try {
 		stage('Preparation') {
-			git url: 'git@bitbucket.org:truemark/installs-build.git', branch: 'master', shallow: true
-			dir ('installs') {
-				git url: 'git@github.com:truemark/installs.git' 
-			}
+			git url: 'git@github.com:truemark/installs.git', branch: 'master', shallow: true
 		}
 		stage('Build') {
-			sh './installs/ubuntu/16.04/mkvmwareiso.sh'
+			sh './ubuntu/16.04/mkvmwareiso.sh'
 		}
 		if (currentBuild.result == null) { // Only build if we haven't failed or gone unstable
 			stage('Results') {
