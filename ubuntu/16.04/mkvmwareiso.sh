@@ -25,12 +25,12 @@ cd ../../
 sudo find image -type d -exec chmod 755 {} \;
 sudo find image -type f -exec chmod 644 {} \;
 
-mkisofs -r -V "TrueMark Ubuntu Install CD" \
+mkisofs -r -V "TrueMark VMware Ubuntu Install CD" \
   -cache-inodes \
   -J -l -b isolinux/isolinux.bin \
   -c isolinux/boot.cat -no-emul-boot \
   -boot-load-size 4 -boot-info-table \
-  -o truemark-ubuntu-16.04.3-server-amd64.iso image/
+  -o truemark-vmware-ubuntu-16.04.3-server-amd64.iso image/
 
 #cd image
 #sudo mkisofs -D -r -V "TrueMark Ubuntu Install CD" -cache-inodes -J -l -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -o ../truemark-ubuntu-16.04.3-server-amd64.iso .
