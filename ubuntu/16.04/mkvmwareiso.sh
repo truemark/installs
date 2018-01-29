@@ -25,7 +25,7 @@ cd ../../
 sudo find image -type d -exec chmod 755 {} \;
 sudo find image -type f -exec chmod 644 {} \;
 
-mkisofs -r -V "TrueMark VMware Ubuntu Install CD" \
+mkisofs -r -V "TrueMark Ubuntu Install CD" \
   -cache-inodes \
   -J -l -b isolinux/isolinux.bin \
   -c isolinux/boot.cat -no-emul-boot \
