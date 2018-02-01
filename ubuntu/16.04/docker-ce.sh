@@ -30,7 +30,7 @@ apt-get install -y docker-ce
 
 apt-mark hold docker-ce
 
-## Setup the dummy interface we use for host services
+## Setup the dummy interface used for host services
 echo "dummy" >> /etc/modules
 
 cat >> /etc/network/interfaces <<EOL
