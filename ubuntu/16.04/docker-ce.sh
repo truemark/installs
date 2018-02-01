@@ -26,7 +26,7 @@ add-apt-repository \
 
 apt-get update
 
-apt-get install -y docker-ce
+apt-get install -y docker-ce apparmor
 
 apt-mark hold docker-ce
 
