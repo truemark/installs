@@ -29,3 +29,16 @@ apt-get update
 apt-get install -y docker-ce
 
 apt-mark hold docker-ce
+
+## Setup the dummy interface we use for host services
+echo "dummy" >> /etc/modules
+
+cat >> /etc/network/interfaces <<EOL
+
+auto dummy0
+iface dummy0 inet static
+address 169.254.1.1
+netmask 255.255.255.255
+EOL
+
+modprobe dummy
