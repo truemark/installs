@@ -71,5 +71,7 @@ sed -i '' 's/dns-nameservers.*/dns-nameservers 169.254.1.1/g' /etc/network/inter
 # Replace the current resolv.conf until a reboot occurs
 sed -i '' 's/nameserver.*/nameserver 169.154.1.1/g' /etc/resolv.conf
 
-# Restart docker
+# Restart services
+systemctl restart dnsmasq
+resolvconf -u
 systemctl restart docker
