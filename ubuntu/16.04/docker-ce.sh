@@ -54,7 +54,7 @@ EOF
 apt-get install -y dnsutils dnsmasq
 
 # Stop dnsmasq so the next configurations work
-systemctl dnsmasq stop
+systemctl stop dnsmasq
 
 # This will prevent overwriting /etc/resolv.conf
 echo "DNSMASQ_EXCEPT=lo" >> /etc/default/dnsmasq
