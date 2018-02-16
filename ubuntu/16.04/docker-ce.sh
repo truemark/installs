@@ -72,7 +72,7 @@ cat /etc/resolv.conf | grep nameserver | sed 's/nameserver /server=/g' >> /etc/d
 sed -i 's/dns-nameservers.*/dns-nameservers 169.254.1.1/g' /etc/network/interfaces
 
 # Replace the current resolv.conf until a reboot occurs
-sed -i 's/nameserver.*/nameserver 169.154.1.1/g' /etc/resolv.conf
+sed -i 's/nameserver.*/nameserver 169.254.1.1/g' /etc/resolv.conf
 
 # Restart services
 systemctl start dnsmasq
