@@ -50,8 +50,11 @@ cat >> /etc/docker/daemon.json <<EOF
 }
 EOF
 
-## Setup dnsmasq and dnsutils
+## Install dnsmasq and dnsutils
 apt-get install -y dnsutils dnsmasq
+
+# Stop dnsmasq so the next configurations work
+systemctl dnsmasq stop
 
 # This will prevent overwriting /etc/resolv.conf
 echo "DNSMASQ_EXCEPT=lo" >> /etc/default/dnsmasq
@@ -72,6 +75,6 @@ sed -i 's/dns-nameservers.*/dns-nameservers 169.254.1.1/g' /etc/network/interfac
 sed -i 's/nameserver.*/nameserver 169.154.1.1/g' /etc/resolv.conf
 
 # Restart services
-systemctl restart dnsmasq
+systemctl start dnsmasq
 resolvconf -u
 systemctl restart docker
