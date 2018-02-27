@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # must be ran as root
 
 
@@ -8,11 +9,16 @@
 #	p6880880_121010_LINUX.zip
 #	p26925311_121020_Linux-x86-64.zip 
 #
+
+#!/usr/bin/env bash
+set -x
+trap read debug
 echo 'The file opened- Good Job!'
 su - root
-yum -Y install java
+#yum -Y install java
+echo 'begin yum install'
 yum -y install oracle-rdbms-server-12cR1-preinstall
-
+echo 'finish install'
 
 cd /etc
 # make file for oraInst.loc
