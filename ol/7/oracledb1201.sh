@@ -14,7 +14,7 @@
 set -x
 trap read debug
 echo 'The file opened- Good Job!'
-su - root
+#su - root
 #yum -Y install java
 echo 'begin yum install'
 yum -y install oracle-rdbms-server-12cR1-preinstall
@@ -51,29 +51,29 @@ unzip linuxamd64_12102_database_1of2.zip
 unzip linuxamd64_12102_database_2of2.zip 
 echo 'unzipped everything'
 # change to oracle user
-su - oracle
-cd database/response
+
+
+cd /home/oracle/database/response
 # insert into response file
-sed -i 's#oracle.install.option=#oracle.install.option=INSTALL_DB_SWONLY#g' db_install.rsp
-sed -i 's#UNIX_GROUP_NAME=#UNIX_GROUP_NAME=oinstall#g' db_install.rsp
-sed -i 's#INVENTORY_LOCATION=#INVENTORY_LOCATION=/etc/oraInventory#g' db_install.rsp
+su oracle -c sed -i 's#oracle.install.option=#oracle.install.option=INSTALL_DB_SWONLY#g' db_install.rsp
+su oracle -c sed -i 's#UNIX_GROUP_NAME=#UNIX_GROUP_NAME=oinstall#g' db_install.rsp
+su oracle -c sed -i 's#INVENTORY_LOCATION=#INVENTORY_LOCATION=/etc/oraInventory#g' db_install.rsp
 #sed -i 's#ORACLE_HOSTNAME=#ORACLE_HOSTNAME=pandora.krenger.ch#g' db_install.rsp
-sed -i 's#ORACLE_HOME=#ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1#g' db_install.rsp
-sed -i 's#ORACLE_BASE=#ORACLE_BASE=/u01/app/oracle#g' db_install.rsp
-sed -i 's#oracle.install.db.InstallEdition=#oracle.install.db.InstallEdition=EE#g' db_install.rsp
-sed -i 's#oracle.install.db.DBA_GROUP=#oracle.install.db.DBA_GROUP=dba#g' db_install.rsp
-sed -i 's#SECURITY_UPDATES_VIA_MYORACLESUPPORT=#SECURITY_UPDATES_VIA_MYORACLESUPPORT=false#g' db_install.rsp
-sed -i 's#oracle.install.db.DGDBA_GROUP=#oracle.install.db.DGDBA_GROUP=dba#g' db_install.rsp
-sed -i 's#oracle.install.db.KMDBA_GROUP=#oracle.install.db.KMDBA_GROUP=dba#g' db_install.rsp
-sed -i 's#DECLINE_SECURITY_UPDATES=#DECLINE_SECURITY_UPDATES=true#g' db_install.rsp
-sed -i 's#oracle.installer.autoupdates.option=#oracle.installer.autoupdates.option=SKIP_UPDATES#g' db_install.rsp
-sed -i 's#oracle.install.db.BACKUPDBA_GROUP=#oracle.install.db.BACKUPDBA_GROUP=dba#g' db_install.rsp
+su oracle -c sed -i 's#ORACLE_HOME=#ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1#g' db_install.rsp
+su oracle -c sed -i 's#ORACLE_BASE=#ORACLE_BASE=/u01/app/oracle#g' db_install.rsp
+su oracle -c sed -i 's#oracle.install.db.InstallEdition=#oracle.install.db.InstallEdition=EE#g' db_install.rsp
+su oracle -c sed -i 's#oracle.install.db.DBA_GROUP=#oracle.install.db.DBA_GROUP=dba#g' db_install.rsp
+su oracle -c sed -i 's#SECURITY_UPDATES_VIA_MYORACLESUPPORT=#SECURITY_UPDATES_VIA_MYORACLESUPPORT=false#g' db_install.rsp
+su oracle -c sed -i 's#oracle.install.db.DGDBA_GROUP=#oracle.install.db.DGDBA_GROUP=dba#g' db_install.rsp
+su oracle -c sed -i 's#oracle.install.db.KMDBA_GROUP=#oracle.install.db.KMDBA_GROUP=dba#g' db_install.rsp
+su oracle -c sed -i 's#DECLINE_SECURITY_UPDATES=#DECLINE_SECURITY_UPDATES=true#g' db_install.rsp
+su oracle -c sed -i 's#oracle.installer.autoupdates.option=#oracle.installer.autoupdates.option=SKIP_UPDATES#g' db_install.rsp
+su oracle -c sed -i 's#oracle.install.db.BACKUPDBA_GROUP=#oracle.install.db.BACKUPDBA_GROUP=dba#g' db_install.rsp
 echo 'updated response file'
 # kick off installation
- ./runInstaller -silent -responseFile ~/database/response/db_install.rsp
-su - root
+ su oracle -c ./runInstaller -silent -responseFile ~/database/response/db_install.rsp
 /u01/app/oracle/product/12.1.0/dbhome_1/root.sh
-su - oracle
+
 cd u01/app/oracle/product/12.1.0/dbhome_1
 mv OPatch/ Opatch_dupO	
 # download OPatch from google drive.
@@ -87,7 +87,7 @@ wget https://drive.google.com/open?id=1-1GQsChizuTHGmUgTqft4xod49oa1FH7
 unzip p26925311_121020_Linux-x86-64.zip 
 #install patches  need to make neater.
 cd 26925311
-./../opatch apply -jdk ../../jdk
+su oracle -c ./../opatch apply -jdk ../../jdk
 
 
 
