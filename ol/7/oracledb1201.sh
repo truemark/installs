@@ -8,6 +8,7 @@
 #	p6880880_121010_LINUX.zip
 #	p26925311_121020_Linux-x86-64.zip 
 #
+echo 'The file opened- Good Job!'
 su - root
 yum -Y install java
 yum -y install oracle-rdbms-server-12cR1-preinstall
@@ -42,7 +43,7 @@ wget https://drive.google.com/open?id=10jLztvyTEtGZAse3zH4q7hB5Q5vCFPIN
 # unzip base download- need to know where theses downloads will be located on host.
 unzip linuxamd64_12102_database_1of2.zip 
 unzip linuxamd64_12102_database_2of2.zip 
-
+echo 'unzipped everything'
 # change to oracle user
 su - oracle
 cd database/response
@@ -61,7 +62,7 @@ sed -i 's#oracle.install.db.KMDBA_GROUP=#oracle.install.db.KMDBA_GROUP=dba#g' db
 sed -i 's#DECLINE_SECURITY_UPDATES=#DECLINE_SECURITY_UPDATES=true#g' db_install.rsp
 sed -i 's#oracle.installer.autoupdates.option=#oracle.installer.autoupdates.option=SKIP_UPDATES#g' db_install.rsp
 sed -i 's#oracle.install.db.BACKUPDBA_GROUP=#oracle.install.db.BACKUPDBA_GROUP=dba#g' db_install.rsp
-
+echo 'updated response file'
 # kick off installation
  ./runInstaller -silent -responseFile ~/database/response/db_install.rsp
 su - root
