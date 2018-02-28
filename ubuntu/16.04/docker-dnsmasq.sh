@@ -5,6 +5,8 @@
 
 set -uex
 
+apt-get update
+
 ## Install dnsmasq and dnsutils
 apt-get install -y dnsutils dnsmasq
 
