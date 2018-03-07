@@ -12,7 +12,13 @@
 
 #!/usr/bin/env bash
 set -x
-
+password=($1)
+echo password
+cd /
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/p6880880_122010_Linux-x86-64.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/p26925311_121020_Linux-x86-64.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/linuxamd64_12102_database_2of2.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/linuxamd64_12102_database_1of2.zip
 echo 'The file opened- Good Job!'
 #su - root
 #yum -Y install java
