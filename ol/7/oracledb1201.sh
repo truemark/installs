@@ -12,7 +12,7 @@
 
 #!/usr/bin/env bash
 set -x
-trap read debug
+
 echo 'The file opened- Good Job!'
 #su - root
 #yum -Y install java
@@ -73,7 +73,8 @@ echo 'unzipped everything'
 # kick off installation
 mv ~/installs/ol/7/db_install.rsp /home/oracle
 cd u01/app/oracle/database
- su oracle -c './runInstaller -silent -responseFile db_install.rsp'
+trap read debug
+ su oracle -c './runInstaller -silent -responseFile /db_install.rsp'
 /u01/app/oracle/product/12.1.0/dbhome_1/root.sh
 
 cd u01/app/oracle/product/12.1.0/dbhome_1
