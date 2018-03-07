@@ -86,6 +86,7 @@ mv OPatch/ Opatch_dupO
 #install new version of opatch
 mv /p6880880_122010_Linux-x86-64.zip .
 unzip p6880880_122010_Linux-x86-64.zip	
+chown -R oracle Opatch
 cd OPatch
 
 #download  latest patch set from google drive.
@@ -93,7 +94,7 @@ cd OPatch
 mv /p26925311_121020_Linux-x86-64.zip .
 unzip p26925311_121020_Linux-x86-64.zip 
 # give oracle ownership of file
-chown -R oracle ../Opatch/
+
 #install patches  need to make neater.
 cd 26925311
 su oracle -c './../opatch apply -jdk ../../jdk'
