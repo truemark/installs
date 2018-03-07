@@ -33,8 +33,8 @@ mkdir -p /u01/app/oracle
 mkdir -p /u01/app/oraInventory
 chown -R oracle:dba /u01
 fi
-cd /
-#cd /u01/app/oracle
+
+cd /u01/app/oracle
 
 #download the four files.
 # use the google links
@@ -47,6 +47,8 @@ cd /
 # wget https://drive.google.com/open?id=10jLztvyTEtGZAse3zH4q7hB5Q5vCFPIN
 
 # unzip base download- need to know where theses downloads will be located on host.
+mv /linuxamd64_12102_database_1of2.zip .
+mv /linuxamd64_12102_database_2of2.zip .
 unzip linuxamd64_12102_database_1of2.zip 
 unzip linuxamd64_12102_database_2of2.zip 
 echo 'unzipped everything'
