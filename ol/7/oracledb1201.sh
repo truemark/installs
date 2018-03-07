@@ -86,7 +86,7 @@ mv OPatch/ Opatch_dupO
 #install new version of opatch
 mv /p6880880_122010_Linux-x86-64.zip .
 unzip p6880880_122010_Linux-x86-64.zip	
-chown -R oracle Opatch
+chown -R oracle OPatch
 cd OPatch
 
 #download  latest patch set from google drive.
