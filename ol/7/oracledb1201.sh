@@ -79,7 +79,7 @@ trap read debug
  su oracle -c './runInstaller -silent -responseFile /home/oracle/db_install.rsp'
 /u01/app/oracle/product/12.1.0/dbhome_1/root.sh
 
-cd u01/app/oracle/product/12.1.0/dbhome_1
+cd /u01/app/oracle/product/12.1.0/dbhome_1
 mv OPatch/ Opatch_dupO	
 # download OPatch from google drive.
 #wget https://drive.google.com/open?id=13nRRfGxwrrnYGLwUXsLZSpQoRcLGU4qc
