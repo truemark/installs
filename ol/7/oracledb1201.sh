@@ -71,6 +71,7 @@ echo 'unzipped everything'
 # sed -i 's#oracle.install.db.BACKUPDBA_GROUP=#oracle.install.db.BACKUPDBA_GROUP=dba#g' db_install.rsp
 # echo 'updated response file'
 # kick off installation
+mv ~/installs/ol/7/db_install.rsp /home/oracle
 cd u01/app/oracle/database
  su oracle -c './runInstaller -silent -responseFile ~/installs/ol/7/db_install.rsp'
 /u01/app/oracle/product/12.1.0/dbhome_1/root.sh
