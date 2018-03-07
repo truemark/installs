@@ -13,7 +13,7 @@
 #!/usr/bin/env bash
 set -x
 password=($1)
-echo password
+echo ${password}
 cd /
 wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/p6880880_122010_Linux-x86-64.zip
 wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/p26925311_121020_Linux-x86-64.zip
