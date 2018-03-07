@@ -27,7 +27,7 @@ oracle.install.responseFileVersion=/oracle/install/rspfmt_dbinstall_response_sch
 #   - INSTALL_DB_AND_CONFIG
 #   - UPGRADE_DB
 #-------------------------------------------------------------------------------
-oracle.install.option=INSTALL_DB_SWONLYINSTALL_DB_SWONLYINSTALL_DB_SWONLY
+oracle.install.option=INSTALL_DB_SWONLY
 
 #-------------------------------------------------------------------------------
 # Specify the hostname of the system as set during the install. It can be used
@@ -40,14 +40,14 @@ ORACLE_HOSTNAME=
 #-------------------------------------------------------------------------------
 # Specify the Unix group to be set for the inventory directory.  
 #-------------------------------------------------------------------------------
-UNIX_GROUP_NAME=oinstalloinstalloinstall
+UNIX_GROUP_NAME=oinstall
 
 #-------------------------------------------------------------------------------
 # Specify the location which holds the inventory files.
 # This is an optional parameter if installing on
 # Windows based Operating System.
 #-------------------------------------------------------------------------------
-INVENTORY_LOCATION=/etc/oraInventory/etc/oraInventory/etc/oraInventory
+INVENTORY_LOCATION=/etc/oraInventory
 #-------------------------------------------------------------------------------
 # Specify the languages in which the components will be installed.             
 # 
@@ -88,12 +88,12 @@ SELECTED_LANGUAGES=en
 #-------------------------------------------------------------------------------
 # Specify the complete path of the Oracle Home. 
 #-------------------------------------------------------------------------------
-ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1/u01/app/oracle/product/12.1.0/dbhome_1/u01/app/oracle/product/12.1.0/dbhome_1
+ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 
 #-------------------------------------------------------------------------------
 # Specify the complete path of the Oracle Base. 
 #-------------------------------------------------------------------------------
-ORACLE_BASE=/u01/app/oracle/u01/app/oracle/u01/app/oracle
+ORACLE_BASE=/u01/app/oracle
 
 #-------------------------------------------------------------------------------
 # Specify the installation edition of the component.                     
@@ -102,7 +102,7 @@ ORACLE_BASE=/u01/app/oracle/u01/app/oracle/u01/app/oracle
 #   - EE     : Enterprise Edition 
 
 #-------------------------------------------------------------------------------
-oracle.install.db.InstallEdition=EEEEEE
+oracle.install.db.InstallEdition=EE
 
 ###############################################################################
 #                                                                             #
@@ -120,7 +120,7 @@ oracle.install.db.InstallEdition=EEEEEE
 #------------------------------------------------------------------------------
 # The DBA_GROUP is the OS group which is to be granted OSDBA privileges.
 #-------------------------------------------------------------------------------
-oracle.install.db.DBA_GROUP=dbadbadba
+oracle.install.db.DBA_GROUP=dba
 
 #------------------------------------------------------------------------------
 # The OPER_GROUP is the OS group which is to be granted OSOPER privileges.
@@ -131,17 +131,17 @@ oracle.install.db.OPER_GROUP=
 #------------------------------------------------------------------------------
 # The BACKUPDBA_GROUP is the OS group which is to be granted OSBACKUPDBA privileges.
 #------------------------------------------------------------------------------
-oracle.install.db.BACKUPDBA_GROUP=dbadbadba
+oracle.install.db.BACKUPDBA_GROUP=dba
 
 #------------------------------------------------------------------------------
 # The DGDBA_GROUP is the OS group which is to be granted OSDGDBA privileges.
 #------------------------------------------------------------------------------
-oracle.install.db.DGDBA_GROUP=dbadbadba
+oracle.install.db.DGDBA_GROUP=dba
 
 #------------------------------------------------------------------------------
 # The KMDBA_GROUP is the OS group which is to be granted OSKMDBA privileges.
 #------------------------------------------------------------------------------
-oracle.install.db.KMDBA_GROUP=dbadbadba
+oracle.install.db.KMDBA_GROUP=dba
 
 ###############################################################################
 #                                                                             #
@@ -420,7 +420,7 @@ MYORACLESUPPORT_PASSWORD=
 #
 # Example    : SECURITY_UPDATES_VIA_MYORACLESUPPORT=falsefalsefalsetrue
 #------------------------------------------------------------------------------
-SECURITY_UPDATES_VIA_MYORACLESUPPORT=falsefalsefalse
+SECURITY_UPDATES_VIA_MYORACLESUPPORT=false
 
 #------------------------------------------------------------------------------
 # Specify whether user doesn't want to configure Security Updates.
@@ -430,9 +430,9 @@ SECURITY_UPDATES_VIA_MYORACLESUPPORT=falsefalsefalse
 # The value can be either true or false. If left blank it will be assumed
 # to be false.
 #
-# Example    : DECLINE_SECURITY_UPDATES=truetruetruefalse
+# Example    : DECLINE_SECURITY_UPDATES=true
 #------------------------------------------------------------------------------
-DECLINE_SECURITY_UPDATES=truetruetrue
+DECLINE_SECURITY_UPDATES=true
 
 #------------------------------------------------------------------------------
 # Specify the Proxy server name. Length should be greater than zero.
@@ -443,6 +443,8 @@ PROXY_HOST=
 
 #------------------------------------------------------------------------------
 # Specify the proxy port number. Should be Numeric and at least 2 chars.
+
+
 #
 # Example    : PROXY_PORT=25
 #------------------------------------------------------------------------------
