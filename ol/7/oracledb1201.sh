@@ -11,7 +11,7 @@
 #
 
 #!/usr/bin/env bash
-set -x
+set -ex
 
 echo 'The file opened- Good Job!'
 #su - root
@@ -99,7 +99,7 @@ chown -R oracle 26925311/
 
 #install patches  need to make neater.
 cd 26925311
-su oracle -c './../opatch apply'
+su oracle -c './../opatch apply -silent'
 #-jdk ../../jdk
 
 
