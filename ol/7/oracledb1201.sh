@@ -92,6 +92,8 @@ cd OPatch
 #wget https://drive.google.com/open?id=1-1GQsChizuTHGmUgTqft4xod49oa1FH7
 mv /p26925311_121020_Linux-x86-64.zip .
 unzip p26925311_121020_Linux-x86-64.zip 
+# give oracle ownership of file
+chown -R oracle ../Opatch/
 #install patches  need to make neater.
 cd 26925311
 su oracle -c './../opatch apply -jdk ../../jdk'
