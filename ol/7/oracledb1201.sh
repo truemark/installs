@@ -84,8 +84,8 @@ mv OPatch/ Opatch_dupO
 # download OPatch from google drive.
 #wget https://drive.google.com/open?id=13nRRfGxwrrnYGLwUXsLZSpQoRcLGU4qc
 #install new version of opatch
-mv /p6880880_121010_LINUX.zip .
-unzip p6880880_121010_LINUX.zip	
+mv /p6880880_122010_Linux-x86-64.zip .
+unzip p6880880_122010_Linux-x86-64.zip	
 cd OPatch
 
 #download  latest patch set from google drive.
