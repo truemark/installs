@@ -94,10 +94,13 @@ cd OPatch
 mv /p26925311_121020_Linux-x86-64.zip .
 unzip p26925311_121020_Linux-x86-64.zip 
 # give oracle ownership of file
+chown -R oracle 26925311/
+
 
 #install patches  need to make neater.
 cd 26925311
-su oracle -c './../opatch apply -jdk ../../jdk'
+su oracle -c './../opatch apply'
+#-jdk ../../jdk
 
 
 
