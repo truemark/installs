@@ -11,7 +11,7 @@
 #
 
 #!/usr/bin/env bash
-set -ex
+set -x
 
 echo 'The file opened- Good Job!'
 #su - root
@@ -19,6 +19,7 @@ echo 'The file opened- Good Job!'
 echo 'begin yum install'
 yum -y install oracle-rdbms-server-12cR1-preinstall
 echo 'finish install'
+
 
 cd /etc
 # make file for oraInst.loc
@@ -76,7 +77,11 @@ echo 'unzipped everything'
 mv ~/installs/ol/7/db_install.rsp /home/oracle
 cd /u01/app/oracle/database
 
- su oracle -c './runInstaller -silent -waitforcompletion -responseFile /home/oracle/db_install.rsp'
+su oracle -c './runInstaller -silent -waitforcompletion -responseFile /home/oracle/db_install.rsp'
+
+if $? = -1
+	exit
+fi
 /u01/app/oracle/product/12.1.0/dbhome_1/root.sh
 
 cd /u01/app/oracle/product/12.1.0/dbhome_1
