@@ -33,7 +33,7 @@ if [ ! -d "/u01/app/oracle" ]; then
 mkdir -p /u01/app/oracle
 mkdir -p /u01/app/oraInventory
 chown -R oracle:dba /u01
-fi
+
 
 cd /u01/app/oracle
 
@@ -80,6 +80,7 @@ cd /u01/app/oracle/database
 su oracle -c './runInstaller -silent -waitforcompletion -responseFile /home/oracle/db_install.rsp'
 
 if $? = -1
+then
 	exit
 fi
 /u01/app/oracle/product/12.1.0/dbhome_1/root.sh
