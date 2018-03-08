@@ -52,7 +52,7 @@ unzip p6880880_122010_Linux-x86-64.zip
 chown -R oracle OPatch
 cd OPatch
 mv /p27105253_122010_Linux-x86-64.zip .
-mv p27001739_122010_Linux-x86-64.zip .
+mv /p27001739_122010_Linux-x86-64.zip .
 unzip p27105253_122010_Linux-x86-64.zip 
 unzip p27001739_122010_Linux-x86-64.zip
 # give oracle ownership of file
