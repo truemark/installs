@@ -137,6 +137,7 @@ oracle.install.db.BACKUPDBA_GROUP=dba
 # The DGDBA_GROUP is the OS group which is to be granted OSDGDBA privileges.
 #------------------------------------------------------------------------------
 oracle.install.db.DGDBA_GROUP=dba
+oracle.install.db.OSRACDBA_GROUP=dba
 
 #------------------------------------------------------------------------------
 # The KMDBA_GROUP is the OS group which is to be granted OSKMDBA privileges.
