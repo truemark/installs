@@ -7,10 +7,10 @@ password=($1)
 
 cd /
 # download required install files
-# wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/linuxx64_12201_database.zip
-# wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p27001739_122010_Linux-x86-64.zip
-# wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p27105253_122010_Linux-x86-64.zip
-# wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p6880880_122010_Linux-x86-64.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/linuxx64_12201_database.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p27001739_122010_Linux-x86-64.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p27105253_122010_Linux-x86-64.zip
+wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p6880880_122010_Linux-x86-64.zip
 
 yum -y install oracle-database-server-12cR2-preinstall
 cd /etc
