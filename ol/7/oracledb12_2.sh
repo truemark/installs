@@ -63,3 +63,6 @@ su oracle -c './../opatch apply -silent'
 
 cd ../27105253
 su oracle -c './../opatch apply -silent'
+
+export ORACLE_HOME=/u01/app/oracle/product/12.2.0/dbhome_1
+
