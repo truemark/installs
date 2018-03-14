@@ -2,7 +2,7 @@
 # must be ran as root
 #This file will install Oracle Database 12.2 on and Oracle Linux 7 box. It will then patch the installation up to March 2018.
 
-set -x
+set -ex
 password=($1)
 
 cd /
@@ -12,6 +12,7 @@ wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  http
 wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p27105253_122010_Linux-x86-64.zip
 wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.2/p6880880_122010_Linux-x86-64.zip
 
+set +e
 yum -y install oracle-database-server-12cR2-preinstall
 cd /etc
 # make file for oraInst.loc
@@ -64,5 +65,5 @@ su oracle -c './../opatch apply -silent'
 cd ../27105253
 su oracle -c './../opatch apply -silent'
 
-export ORACLE_HOME=/u01/app/oracle/product/12.2.0/dbhome_1
+su oracle -c export ORACLE_HOME='/u01/app/oracle/product/12.2.0/dbhome_1'
 

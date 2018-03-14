@@ -2,7 +2,7 @@
 # must be ran as root
 #This file will install Oracle Database 12.1 on and Oracle Linux 7 box. It will then patch the installation up to March 2018.
 
-set -x
+set -ex
 password=($1)
 
 cd /
@@ -12,6 +12,7 @@ wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  http
 wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/linuxamd64_12102_database_2of2.zip
 wget --user=thirdparty --password=${password} --save-cookies mycookies.txt  https://download.truemark.io/oracle/Oracle%20Database%2012.1/linuxamd64_12102_database_1of2.zip
 
+set +e
 yum -y install oracle-rdbms-server-12cR1-preinstall
 cd /etc
 # make file for oraInst.loc
