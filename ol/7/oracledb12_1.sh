@@ -38,9 +38,9 @@ unzip linuxamd64_12102_database_2of2.zip
 echo 'unzipped everything'
 
 # kick off installation
-mv ~/installs/ol/7/db_install.rsp /home/oracle
+mv ~/installs/ol/7/db_install12_1.rsp /home/oracle
 cd /u01/app/oracle/database
-su oracle -c './runInstaller -silent -waitforcompletion -responseFile /home/oracle/db_install.rsp'
+su oracle -c './runInstaller -silent -waitforcompletion -responseFile /home/oracle/db_install12_1.rsp'
 if [$? = -1]; then
 	exit
 fi
