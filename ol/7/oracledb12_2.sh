@@ -36,7 +36,7 @@ unzip linuxx64_12201_database.zip
 echo 'unzipped everything'
 
 # kick off installation
-mv ~/installs/ol/7/db_install12_2.rsp /home/oracle
+mv /home/user/db_install12_2.rsp /home/oracle
 cd /u01/app/oracle/database
 su oracle -c './runInstaller -silent -waitforcompletion -responseFile /home/oracle/db_install12_2.rsp'
 if [$? = -1]; then
@@ -65,5 +65,7 @@ su oracle -c './../opatch apply -silent'
 cd ../27105253
 su oracle -c './../opatch apply -silent'
 
-su oracle -c export ORACLE_HOME='/u01/app/oracle/product/12.2.0/dbhome_1'
+su oracle -c 'export ORACLE_HOME=/u01/app/oracle/product/12.2.0/dbhome_1'
+su oracle -c 'PATH=$PATH:$ORACLE_HOME/bin '
+su oracle -c 'export PATH'
 
