@@ -60,6 +60,10 @@ chown -R oracle 26925311/
 cd 26925311
 su oracle -c './../opatch apply -silent'
 
+su oracle -c 'export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1'
+su oracle -c 'PATH=$PATH:$ORACLE_HOME/bin '
+su oracle -c 'export PATH'
+
 
 
 
