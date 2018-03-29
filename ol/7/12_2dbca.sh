@@ -2,7 +2,7 @@
 set -ex
 #change file permissions to allow oracle to run them
 dbname=($1)
-password = ($2)
+password=($2)
 #update commands with variable values
 sed -i "s/gdbName=orcl.yleo.us = gdbName=${dbname}.yleo.us" 12_2dbca.rsp
 sed -i "s/sid=orcl = sid=${dbname}" 12_2dbca.rsp
