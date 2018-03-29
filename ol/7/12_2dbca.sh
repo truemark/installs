@@ -12,6 +12,7 @@ sed -i "s/systemPassword= /systemPassword=${password}/g" 12_2dbca.rsp
 
 chown oracle:oinstall 12_2dbca.rsp
 chmod 664 12_2dbca.rsp
+mv 12_2dbca.rsp /home/oracle/
 
 cd /u01/app/oracle/product/12.2.0/dbhome_1/bin
 su oracle -c './dbca -silent -createDatabase -responseFile ~/dbca_response.rsp '
