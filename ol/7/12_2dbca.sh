@@ -57,7 +57,7 @@ fi
 
 #update commands with variable values
 #create directories
-mkdir u02/oradata/
+mkdir /u02/oradata/
 mkdir /u03/fast_recovery_area/
 
 #Specify Fast Recovery Area Size to be at least three times the database size. update in rsp file. need to determine what size it should be
