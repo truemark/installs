@@ -551,7 +551,7 @@ variables=DB_UNIQUE_NAME=orcl,ORACLE_BASE=/u01/app/oracle,PDB_NAME=,DB_NAME=orcl
 # Default value : None
 # Mandatory     : NO
 #-----------------------------------------------------------------------------
-initParams=undo_tablespace=UNDOTBS1,processes=320,db_recovery_file_dest_size=8016MB,nls_language=AMERICAN,pga_aggregate_target=3190MB,sga_target=9568MB,dispatchers=(PROTOCOL=TCP) (SERVICE=orclXDB),db_recovery_file_dest={ORACLE_BASE}/fast_recovery_area/{DB_UNIQUE_NAME},db_block_size=8192BYTES,diagnostic_dest={ORACLE_BASE},audit_file_dest={ORACLE_BASE}/admin/{DB_UNIQUE_NAME}/adump,db_create_file_dest={ORACLE_BASE}/oradata/{DB_UNIQUE_NAME}/,nls_territory=AMERICA,compatible=12.2.0,db_name=orcl,audit_trail=db,db_domain=yleo.us,remote_login_passwordfile=EXCLUSIVE,open_cursors=300
+initParams=undo_tablespace=UNDOTBS1,processes=320,db_recovery_file_dest_size=10240MB,nls_language=AMERICAN,pga_aggregate_target=3190MB,sga_target=9568MB,dispatchers=(PROTOCOL=TCP) (SERVICE=orclXDB),db_recovery_file_dest={ORACLE_BASE}/fast_recovery_area/{DB_UNIQUE_NAME},db_block_size=8192BYTES,diagnostic_dest={ORACLE_BASE},audit_file_dest={ORACLE_BASE}/admin/{DB_UNIQUE_NAME}/adump,db_create_file_dest={ORACLE_BASE}/oradata/{DB_UNIQUE_NAME}/,nls_territory=AMERICA,compatible=12.2.0,db_name=orcl,audit_trail=db,db_domain=yleo.us,remote_login_passwordfile=EXCLUSIVE,open_cursors=300
 
 #-----------------------------------------------------------------------------
 # Name          : sampleSchema
