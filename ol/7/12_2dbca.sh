@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Exit on errors and unset variables
-set -uex
+# Exit on errors
+set -e
 
 function usage() {
 	echo "Usage: $0"
@@ -11,7 +11,7 @@ function usage() {
 }
 
 # Process arguments
-while getopts ":d:p:" opt; do
+while getopts ":d:p:h" opt; do
 	case "${opt}" in
 		c)
 			dbname="${OPTARG}"
@@ -22,7 +22,12 @@ while getopts ":d:p:" opt; do
 		w)
 			password="${OPTARG}"
 			;;
+		h)
+			usage
+			exit 0
+			;;
 		*)
+			echo "Unknown parameter ${opt}"
 			usage
 			exit 1
 			;;
@@ -45,6 +50,9 @@ if [ -z "${password}" ]; then
 	usage
 	exit 1
 fi
+
+# Exit on error
+set -u
 
 #change file permissions to allow oracle to run them
 
