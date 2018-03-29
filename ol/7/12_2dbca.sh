@@ -14,7 +14,7 @@ function usage() {
 # Process arguments
 while getopts ":d:p:h" opt; do
 	case "${opt}" in
-		uc)
+		c)
 			dbname="${OPTARG}"
 			;;
 		p)
