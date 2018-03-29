@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Exit on errors
-set -ex
+set -e
 
 function usage() {
 	echo "Usage: $0"
