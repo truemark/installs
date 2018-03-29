@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Exit on errors
-set -e
+# Exit on errors and unset variables
+set -uex
 
 function usage() {
 	echo "Usage: $0"
@@ -11,7 +11,7 @@ function usage() {
 }
 
 # Process arguments
-while getopts ":d:p:h" opt; do
+while getopts ":d:p:" opt; do
 	case "${opt}" in
 		c)
 			dbname="${OPTARG}"
@@ -22,12 +22,7 @@ while getopts ":d:p:h" opt; do
 		w)
 			password="${OPTARG}"
 			;;
-		h)
-			usage
-			exit 0
-			;;
 		*)
-			echo "Unknown parameter ${opt}"
 			usage
 			exit 1
 			;;
@@ -51,9 +46,6 @@ if [ -z "${password}" ]; then
 	exit 1
 fi
 
-# Exit on error
-set -u
-
 #change file permissions to allow oracle to run them
 
 #to do
@@ -67,6 +59,10 @@ set -u
 #create directories
 mkdir /u02/oradata/
 mkdir /u03/fast_recovery_area/
+chown oracle:oinstall /u02/oradata/
+chown oracle:oinstall /u03/fast_recovery_area/
+chmod 664 /u02/oradata/
+chmod 664 /u03/fast_recovery_area/
 
 #Specify Fast Recovery Area Size to be at least three times the database size. update in rsp file. need to determine what size it should be
 sed -i "s/gdbName=orcl.yleo.us/gdbName=${dbname}.yleo.us/g" 12_2dbca.rsp
