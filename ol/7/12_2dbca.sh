@@ -15,7 +15,7 @@ chmod 664 12_2dbca.rsp
 mv 12_2dbca.rsp /home/oracle/
 
 cd /u01/app/oracle/product/12.2.0/dbhome_1/bin
-su oracle -c './dbca -silent -createDatabase -responseFile ~/dbca_response.rsp '
+su oracle -c './dbca -silent -createDatabase -responseFile ~/12_2dbca.rsp'
 if [$? = -1; then
 echo 'dbca failed to complete'
 exit
