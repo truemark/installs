@@ -1,8 +1,40 @@
 #!/usr/bin/env bash
-set -ex
-#change file permissions to allow oracle to run them
-dbname=($1)
-password=($2)
+
+# Exit on errors and unset variables
+set -uex
+
+function usage() {
+	echo "Usage: $0"
+	printf "  %s %-20s%s\n" "-d" "[DBNAME]" "Database name"
+	printf "  %s %-20s%s\n" "-p" "[PASSWORD]" "Database password"
+	exit 0
+}
+
+# Process arguments
+while getopts ":d:p:" opt; do
+	case "${opt}" in
+		d)
+			dbname="${OPTARG}"
+			;;
+		p)
+			password="${OPTARG}"
+			;;
+		*)
+			usage
+			;;
+	esac
+done
+
+# Validate arguments
+if [ -z "${dbname}" ]; then
+	echo "dbname is a required parameter"
+	usage
+fi
+if [ -z "${password}" ]; then
+	echo "password is a required parameter"
+	usage
+fi
+
 #update commands with variable values
 
 #Specify Fast Recovery Area Size to be at least three times the database size. update in rsp file. need to determine what size it should be
