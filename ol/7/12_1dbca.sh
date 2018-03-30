@@ -76,7 +76,7 @@ sed -i "s/sysPassword=/sysPassword=${password}/g" /home/oracle/12_1dbca.rsp
 sed -i "s/systemPassword=/systemPassword=${password}/g" /home/oracle/12_1dbca.rsp
 sed -i "s/DB_UNIQUE_NAME=orcl/DB_UNIQUE_NAME=${dbname}/g " /home/oracle/12_1dbca.rsp
 sed -i "s/DB_NAME=orcl/DB_NAME=${dbname}/g" /home/oracle/12_1dbca.rsp
-sed -i "s/SID=orcl/SID=${dbname}/g" /home/oracle/12_2dbca.rsp
+sed -i "s/SID=orcl/SID=${dbname}/g" /home/oracle/12_1 dbca.rsp
 sed -i "s/db_recovery_file_dest={ORACLE_BASE}/db_recovery_file_dest=u03/g" /home/oracle/12_1dbca.rsp
 sed -i "s/db_create_file_dest={ORACLE_BASE}/db_create_file_dest=u02/g" /home/oracle/12_1dbca.rsp
 sed -i "s/db_name=orcl/db_name=${dbname}/g" /home/oracle/12_1dbca.rsp
