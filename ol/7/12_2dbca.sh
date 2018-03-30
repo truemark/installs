@@ -95,7 +95,7 @@ sed -i "s/db_name=orcl/db_name=${dbname}/g" /home/oracle/12_2dbca.rsp
 
 cd /u01/app/oracle/product/12.2.0/dbhome_1/bin
 su oracle -c './dbca -silent -createDatabase -responseFile ~/12_2dbca.rsp'
-if [$? = -1; then
-echo 'dbca failed to complete'
-exit
+if [ $? = -1 ]; then
+	echo 'dbca failed to complete'
+	exit
 fi
