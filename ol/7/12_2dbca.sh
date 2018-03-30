@@ -70,8 +70,8 @@ mkdir -p /u02/oradata/
 mkdir -p /u03/fast_recovery_area/
 chown oracle:oinstall /u02/oradata/
 chown oracle:oinstall /u03/fast_recovery_area/
-chmod 664 /u02/oradata/
-chmod 664 /u03/fast_recovery_area/
+chmod 775 /u02/oradata/
+chmod 775 /u03/fast_recovery_area/
 
 #Specify Fast Recovery Area Size to be at least three times the database size. update in rsp file. need to determine what size it should be
 sed -i "s/gdbName=orcl.yleo.us/gdbName=${dbname}.yleo.us/g" 12_2dbca.rsp
