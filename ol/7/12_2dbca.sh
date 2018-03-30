@@ -3,7 +3,7 @@
 # Exit on errors and unset variables
 set -uex
 
-if whoami != root
+if whoami != "root"
 	echo "script must be run as root"
 	exit
 fi
