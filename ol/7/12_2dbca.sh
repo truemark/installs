@@ -17,7 +17,7 @@ function usage() {
 }
 
 # Process arguments
-while getopts ":d:p:h" opt; do
+while getopts ":c::p::w::h" opt; do
 	case "${opt}" in
 		c)
 			dbname="${OPTARG}"
@@ -32,26 +32,21 @@ while getopts ":d:p:h" opt; do
 			usage
 			exit 0
 			;;
-		*)
-			echo "Unknown option ${opt}"
-			usage
-			exit 1
-			;;
 	esac
 done
 
 # Validate arguments
-if [ -z "${dbname}" ]; then
+if [ -z ${dbname} ]; then
 	echo "dbname is a required parameter"
 	usage
 	exit 1
 fi
-if [ -z "${pdbname}" ]; then
+if [ -z ${pdbname} ]; then
 	echo "pdbname is a required parameter"
 	usage
 	exit 1
 fi
-if [ -z "${password}" ]; then
+if [ -z ${password} ]; then
 	echo "password is a required parameter"
 	usage
 	exit 1
