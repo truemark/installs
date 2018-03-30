@@ -3,7 +3,7 @@
 # Exit on errors
 set -e
 
-if whoami != "root"
+if [ $whoami != "root" ]; then
 	echo "script must be run as root"
 	exit
 fi
