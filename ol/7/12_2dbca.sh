@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# Exit on errors and unset variables
-set -uex
+# Exit on errors
+set -e
 
 if whoami != "root"
 	echo "script must be run as root"
@@ -13,10 +13,11 @@ function usage() {
 	printf "  %s %-20s%s\n" "-c" "[CDBNAME]" "Container database name"
 	printf "  %s %-20s%s\n" "-p" "[PDBNAME]" "Pluggable database name"
 	printf "  %s %-20s%s\n" "-w" "[PASSWORD]" "Database password"
+	printf "  %s %-20s%s\n" "-h" "" "Prints this menu"
 }
 
 # Process arguments
-while getopts ":d:p:" opt; do
+while getopts ":d:p:h" opt; do
 	case "${opt}" in
 		c)
 			dbname="${OPTARG}"
@@ -27,7 +28,12 @@ while getopts ":d:p:" opt; do
 		w)
 			password="${OPTARG}"
 			;;
+		h)
+			usage
+			exit 0
+			;;
 		*)
+			echo "Unknown option ${opt}"
 			usage
 			exit 1
 			;;
@@ -50,6 +56,9 @@ if [ -z "${password}" ]; then
 	usage
 	exit 1
 fi
+
+# Exit on uset varibles
+set -u
 
 #change file permissions to allow oracle to run them
 
