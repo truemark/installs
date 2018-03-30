@@ -3,6 +3,11 @@
 # Exit on errors and unset variables
 set -uex
 
+if whoami != root
+	echo "script must be run as root"
+	exit
+fi
+
 function usage() {
 	echo "Usage: $0"
 	printf "  %s %-20s%s\n" "-c" "[CDBNAME]" "Container database name"
@@ -57,8 +62,8 @@ fi
 
 #update commands with variable values
 #create directories
-mkdir /u02/oradata/
-mkdir /u03/fast_recovery_area/
+mkdir -p /u02/oradata/
+mkdir -p /u03/fast_recovery_area/
 chown oracle:oinstall /u02/oradata/
 chown oracle:oinstall /u03/fast_recovery_area/
 chmod 664 /u02/oradata/
