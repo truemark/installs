@@ -8,9 +8,9 @@ cd $DIR
 # Get ISO Image
 mkdir -p ISOTMP
 cd ISOTMP
-wget -c http://releases.ubuntu.com/16.04.3/ubuntu-16.04.3-server-amd64.iso
+wget -c http://releases.ubuntu.com/16.04.4/ubuntu-16.04.4-server-amd64.iso
 sudo mkdir -p /mnt/cdrom
-sudo mount -o loop ubuntu-16.04.3-server-amd64.iso /mnt/cdrom
+sudo mount -o loop ubuntu-16.04.4-server-amd64.iso /mnt/cdrom
 rm -rf image
 mkdir -p image
 rsync -av /mnt/cdrom/ image/
@@ -30,9 +30,9 @@ mkisofs -r -V "TrueMark Ubuntu Install CD" \
   -J -l -b isolinux/isolinux.bin \
   -c isolinux/boot.cat -no-emul-boot \
   -boot-load-size 4 -boot-info-table \
-  -o truemark-vmware-ubuntu-16.04.3-server-amd64.iso image/
+  -o truemark-vmware-ubuntu-16.04.4-server-amd64.iso image/
 
 sudo rm -rf image
-sha1sum truemark-vmware-ubuntu-16.04.3-server-amd64.iso > truemark-vmware-ubuntu-16.04.3-server-amd64.iso.sha1
-scp truemark-vmware-ubuntu-16.04.3-server-amd64.iso download@172.16.224.50:iso/
-scp truemark-vmware-ubuntu-16.04.3-server-amd64.iso.sha1 download@172.16.224.50:iso/
+sha1sum truemark-vmware-ubuntu-16.04.4-server-amd64.iso > truemark-vmware-ubuntu-16.04.4-server-amd64.iso.sha1
+scp truemark-vmware-ubuntu-16.04.4-server-amd64.iso download@172.16.224.50:iso/
+scp truemark-vmware-ubuntu-16.04.4-server-amd64.iso.sha1 download@172.16.224.50:iso/
