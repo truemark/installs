@@ -1,7 +1,7 @@
 #!/usr/bin/env/bash
 
 # To execute this script run the following as root
-# bash <(curl http://installs.truemark.io/ubuntu/16.04/truemark.sh)
+# bash <(curl http://installs.truemark.io/ubuntu/18.04/truemark.sh)
 set -uex
 
 # Allow user to sudo without a password
