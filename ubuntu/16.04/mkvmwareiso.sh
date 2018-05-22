@@ -32,7 +32,7 @@ mkisofs -r -V "TrueMark Ubuntu Install CD" \
   -boot-load-size 4 -boot-info-table \
   -o truemark-vmware-ubuntu-16.04.4-server-amd64.iso image/
 
-sudo rm -rf image
-sha1sum truemark-vmware-ubuntu-16.04.4-server-amd64.iso > truemark-vmware-ubuntu-16.04.4-server-amd64.iso.sha1
-scp truemark-vmware-ubuntu-16.04.4-server-amd64.iso download@172.16.224.50:iso/
-scp truemark-vmware-ubuntu-16.04.4-server-amd64.iso.sha1 download@172.16.224.50:iso/
+#sudo rm -rf image
+#sha1sum truemark-vmware-ubuntu-16.04.4-server-amd64.iso > truemark-vmware-ubuntu-16.04.4-server-amd64.iso.sha1
+#scp truemark-vmware-ubuntu-16.04.4-server-amd64.iso download@172.16.224.50:iso/
+#scp truemark-vmware-ubuntu-16.04.4-server-amd64.iso.sha1 download@172.16.224.50:iso/
