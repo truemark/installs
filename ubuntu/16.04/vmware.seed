@@ -1,6 +1,4 @@
 #### TrueMark Ubuntu Preseed Installation Script
-# To use this preseed file hit F6, then ESC and then modify the boot options to look like the following:
-# Boot Options auto=true priority=critical url=http://installs.truemark.io/ubuntu/16.04/vmware.seed vga=768 initrd=/install/initrd.gz quiet ---
 
 ## Useful Links
 # https://help.ubuntu.com/lts/installation-guide/armhf/apbs01.html
@@ -138,7 +136,7 @@ d-i pkgsel/upgrade select full-upgrade
 
 # Install packages
 d-i base-installer/install-recommends boolean false
-d-i pkgsel/include string vim openssh-server ntp open-vm-tools ethtool haveged
+d-i pkgsel/include string vim openssh-server ntp open-vm-tools ethtool haveged curl
 
 # No boot splash screen
 d-i debian-installer/splash boolean false
@@ -152,4 +150,8 @@ d-i finish-install/reboot_in_progress note
 
 # Set buffers on network interface
 d-i preseed/late_command string \
-	in-target sed -i 's/^exit 0/\/sbin\/ethtool -G ens192 rx 4096 tx 4096\n&/' etc/rc.local;
+echo '#!/bin/bash' > /target/etc/rc.local; \
+echo '/sbin/ethtool -G ens192 rx 4096 tx 4096' >> /target/etc/rc.local; \
+echo '/sbin/ethtool -G ens33 rx 4096 tx 4096' >> /target/etc/rc.local; \
+echo 'exit 0' >> /target/etc/rc.local; \
+chmod +x /target/etc/rc.local;
