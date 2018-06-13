@@ -13,6 +13,7 @@ echo fs.inotify.max_user_instances=16384 | sudo tee -a /etc/sysctl.conf && sudo 
 apt-get update
 
 apt-get install -y \
+  gpg-agent \
   apt-transport-https \
   ca-certificates \
   curl \
