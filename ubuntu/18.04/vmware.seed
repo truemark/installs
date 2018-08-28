@@ -136,7 +136,7 @@ d-i pkgsel/upgrade select full-upgrade
 
 # Install packages
 d-i base-installer/install-recommends boolean false
-d-i pkgsel/include string vim openssh-server ntp open-vm-tools ethtool haveged curl
+d-i pkgsel/include string apparmor apparmor-profiles-extra apparmor-utils vim openssh-server ntp open-vm-tools ethtool haveged curl wget screen
 
 # No boot splash screen
 d-i debian-installer/splash boolean false
