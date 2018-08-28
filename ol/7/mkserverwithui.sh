@@ -49,7 +49,7 @@ mkisofs -r -V "TrueMark OL7 UI" \
   -o truemark-OL-7.4-ui.iso image/
 
 sudo rm -fr image
-cd ISOTMP
+cd ~/ISOTMP/
 sha1sum truemark-OL-7.4-ui.iso > truemark-OL-7.4-ui.iso.sha1
 scp -P 2020 truemark-OL-7.4-ui.iso download@69.160.74.206:oracle/Oracle\ Linux\ 7/
 scp -P 2020 truemark-OL-7.4-ui.iso.sha1 download@69.160.74.206:oracle/Oracle\ Linux\ 7/
