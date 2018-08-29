@@ -1,4 +1,4 @@
-#!/usr/bin/env/bash
+#!/usr/bin/env bash
 
 # To execute this script run the following as root
 # bash <(curl http://installs.truemark.io/ubuntu/18.04/truemark.sh)
@@ -66,8 +66,9 @@ service sshd restart
 # Disable IPV6
 echo "
 # Disabling IPV6
-NETWORKING_IPV6=no
-IPV6INIT=no" >> /etc/sysconfig/network
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1
+net.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.d/99-sysctl.conf
 
 # Enable default firewall
 
