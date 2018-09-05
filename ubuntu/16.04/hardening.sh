@@ -1,3 +1,6 @@
+## TrueMark Ubuntu 16 Hardening
+## Must be ran as root
+
 #!/usr/bin/env bash
 
 # To execute this script run the following as root
