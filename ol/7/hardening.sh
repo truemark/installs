@@ -39,6 +39,7 @@ Protocol 2" >> /etc/ssh/sshd_config
 
 # Set session timeout to 15 mins
 echo "
+# Set session timeout
 ClientAliveInterval 15m      # 15 minutes" >> /etc/ssh/sshd_config
 
 # Disable root login via SSH 
