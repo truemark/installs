@@ -57,8 +57,10 @@ service sshd restart
 # Disable IPV6
 echo "
 # Disabling IPV6
-NETWORKING_IPV6=no
-IPV6INIT=no" >> /etc/sysconfig/network
+net.ipv6.conf.all.disable_ipv6 = 1
+net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
+
+sysctl -p
 
 # Point ntp to the YL time server
 #echo "server time.yleo.us" >> /etc/ntp.conf
