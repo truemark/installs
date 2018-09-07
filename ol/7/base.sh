@@ -11,6 +11,13 @@ sudo curl -o /etc/yum.repos.d/newrelic-infra.repo https://download.newrelic.com/
 # Update your yum cache
 sudo yum -q makecache -y --disablerepo='*' --enablerepo='newrelic-infra'
 
+# Adding EPEL and Haveged
+
+wget http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+sudo rpm -Uvh epel-release-latest-7.noarch.rpm
+sudo yum update -y
+sudo yum install epel-release haveged -y
+
 # Run the installation script, this portion of the script
 #   should only be ran on a new host with the host name up dated. 
 
