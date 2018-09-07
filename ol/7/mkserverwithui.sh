@@ -32,12 +32,12 @@ rsync -av /mnt/cdrom/ image/
 sudo umount /mnt/cdrom
 
 chmod 755 image/preseed
-cp ../server-with-ui-ks.cfg image/preseed
+cp ../server-with-ui-ks.cfg image/ks.cfg
 
 cd image/isolinux
 chmod 755 .
 chmod 644 isolinux.cfg
-sudo sed -i 's/  append initrd=initrd.img inst.stage2=hd:LABEL=OL-7.4\\x20Server.x86_64 rd.live.check quiet/  append initrd=initrd.img inst.ks=\/cdrom\/preseed\/server-with-ui-ks.cfg inst.txt quiet/' isolinux.cfg
+sudo sed -i 's/  append initrd=initrd.img inst.stage2=hd:LABEL=OL-7.4\\x20Server.x86_64 rd.live.check quiet/  append initrd=initrd.img inst.ks=cdrom inst.txt quiet/' isolinux.cfg
 
 sudo sed -i 's/timeout 600/timeout 1/' isolinux.cfg
 cd ../../
