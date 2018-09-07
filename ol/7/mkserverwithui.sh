@@ -29,10 +29,8 @@ sudo mount -o loop V921569-01.iso /mnt/cdrom
 rm -rf image
 mkdir -p image
 rsync -av /mnt/cdrom/ image/
-sudo umount /mnt/cdrom
-
-chmod 755 image/preseed
 cp ../server-with-ui-ks.cfg image/ks.cfg
+sudo umount /mnt/cdrom
 
 cd image/isolinux
 chmod 755 .
