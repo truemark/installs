@@ -22,7 +22,6 @@ cp ../vmware.seed image/preseed
 cd image/isolinux
 chmod 755 .
 chmod 644 txt.cfg
-sudo sed -i 's/file=\/cdrom\/preseed\/ubuntu-server.seed vga=788 initrd=\/install\/initrd.gz/auto=true priority=critical url=http:\/\/installs.truemark.io\/ubuntu\/16.04\/vmware.seed vga=788 initrd=\/install\/initrd.gz/' txt.cfg
 sudo sed -i 's/file=\/cdrom\/preseed\/ubuntu-server.seed vga=788 initrd=\/install\/initrd.gz/auto=true priority=critical file=\/cdrom\/preseed\/vmware.seed vga=788 initrd=\/install\/initrd.gz/' txt.cfg
 sudo sed -i 's/timeout 0/timeout 1/' isolinux.cfg
 cd ../../
