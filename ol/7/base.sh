@@ -28,7 +28,7 @@ sudo yum install epel-release haveged -y
 ################################
 
 # Download and install the latest Actifio Connector
-#curl --remote-name http://slc-actifio-01.yleo.us/connector-Linux-latestversion.rpm
+#curl --remote-name http://<target-host>/connector-Linux-latestversion.rpm
 #rpm -ivh connector-Linux-latestversion.rpm
 
 ##########################
