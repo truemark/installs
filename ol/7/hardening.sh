@@ -97,11 +97,22 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
   <port protocol=\"udp\" port=\"3872\"/>
 </service>" > /etc/firewalld/services/oracle-oem.xml
 
+echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<service>
+  <short>vncviewer</short>
+  <description>VNC Viewer</description>
+  <port protocol=\"tcp\" port=\"5601\"/>
+  <port protocol=\"udp\" port=\"5601\"/>
+  <port protocol=\"tcp\" port=\"5605\"/>
+  <port protocol=\"udp\" port=\"5605\"/>
+</service>" > /etc/firewalld/services/vnc-viewer.xml
+
 # Reload to allow access to new 
 firewall-cmd --reload
 
 # Enabling the new services
 #firewall-cmd --zone=public --permanent --add-service=actifio-uds-agent
+#firewall-cmd --zone=public --permanent --add-service=vnc-viewer
 
 #The next two should only be enabled on db servers as needed. 
 #firewall-cmd --zone=public --permanent --add-service=oracle-oem
