@@ -63,8 +63,8 @@ net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 
 sysctl -p
 
-# Point ntp to the YL time server
-#echo "server time.yleo.us" >> /etc/ntp.conf
+# Point ntp to time server
+#echo "server Target-Log-Server" >> /etc/ntp.conf
 
 # Enable default firewall
 systemctl start firewalld
