@@ -30,14 +30,13 @@ apt-get update && apt-get upgrade -y
 echo "
 # This section has been added as part of the hardening process.
 # Prevent blank passwords
-auth        sufficient    so likeauth nullok
+auth        sufficient   pam_unix.so likeauth
 
 # Remember the last 5 passwords and prevent them from being reused
-password   sufficient    pam_unix.so nullok use_authtok md5 shadow remember=5" >> /etc/pam.d/system-auth
+password   sufficient    pam_pwhistory.so remember=5 use_authtok
 
-echo "
-# This section sets retries to 3, minimum length to 10 & that all 4 type classes (Upper/Lower/Digital/Other) are required. 
-password requisite pam_cracklib.so retry=3 minlen=10 ucredit=-1 lcredit=-1 dcredit=-1  ocredit=-1"
+# This section sets retries to 3, minimum length to 10 & that all 4 type classes (Upper/Lower/Digital/Other) are required.
+password        requisite       pam_pwquality.so minlen=8 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1" >> /etc/pam.d/common-password
 
 #########################
 ## Harden Shell Access ##

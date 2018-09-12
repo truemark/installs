@@ -46,23 +46,17 @@ if has("autocmd")
 endif
 EOL
 
-###################################
-## Setup NewRelic Infrastructure ##
-###################################
+####################################################
+## No NR Setup as it's not supported on 18.04 yet ##
+####################################################
 
-### 18.04 isn't supported by NR Infrastructure yet.
-### https://discuss.newrelic.com/t/support-for-ubuntu-18-04/58347
-### According to that support is expected within the 3rd Quarter of 2018
+###########################
+## Configure patch proxy ##
+###########################
 
-# Create a configuration file and add your license key
-#echo "license_key: 80c4cce6e5d9aee51d8d86bef4cf7aefc8803f35" | tee -a /etc/newrelic-infra.yml
-
-# You can add extra configurations that fine-tune your agent’s behavior and collect custom attributes.
-# Enable New Relic’s GPG key
-#curl https://download.newrelic.com/infrastructure_agent/gpg/newrelic-infra.gpg | apt-key add -
-
-# Create the agent’s apt repo using the command for your distribution version
-#printf "deb [arch=amd64] http://download.newrelic.com/infrastructure_agent/linux/apt xenial main" | tee -a /etc/apt/sources.list.d/newrelic-infra.list
-
-# Update your apt cache
-#apt-get update
+echo "Acquire {
+        Retries "0";
+        HTTP {
+                Proxy "http://patchproxy.yleo.us:3128/";
+        };
+};" > /etc/apt/apt.conf.d/02-proxy

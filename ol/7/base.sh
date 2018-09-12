@@ -2,6 +2,13 @@
 ## Must be ran as root
 
 #################################################
+## Setup server to pull updates via the proxy ##
+#################################################
+
+sed -i "s/enableProxy=0/enableProxy=1/" /etc/sysconfig/rhn/up2date
+sed -i "s/httpProxy=/httpProxy=http://<target-server>:3128/" /etc/sysconfig/rhn/up2date
+
+#################################################
 ## Prepare For Install NewRelic Infrastructure ##
 #################################################
 
@@ -47,7 +54,7 @@ echo "
 user    ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers.d/admins
 
 # Have sudoers include sudoers.d
-sed -i "s/#includedir/includedir/" #includedir /etc/sudoers.d
+sed -i "s/#includedir/includedir/" /etc/sudoer.d  #includedir /etc/sudoers.d
 
 # Set passwords for Root and Admin user
 echo "root:truemark" | chpasswd
