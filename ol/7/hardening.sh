@@ -7,7 +7,7 @@
 ## Configure syslog to forward to central syslog server ##
 ##########################################################
 
-#echo "*.*;auth,authpriv.none @Target-Log-Server:514" > /etc/rsyslog.d/51-custom.conf
+#echo "*.*;auth,authpriv.none @<Target-Log-Server>:514" > /etc/rsyslog.d/51-custom.conf
 
 ##########################
 ## Apply Latest Patches ##
@@ -20,7 +20,16 @@ yum update && yum upgrade -y
 #################################
 
 # Set password policies
-authconfig --passminlen=8 --passminclass=4 --update # Require min of 8 characters and require all 4 type classes Upper/Lower/Digital/Other
+echo "
+# This section has been added as part of the hardening process.
+# Prevent blank passwords
+auth        sufficient   pam_unix.so likeauth
+
+# Remember the last 5 passwords and prevent them from being reused
+password   sufficient    pam_pwhistory.so remember=5 use_authtok
+
+# This section sets retries to 3, minimum length to 10 & that all 4 type classes (Upper/Lower/Digital/Other) are required.
+password        requisite       pam_pwquality.so minlen=8 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1" >> /etc/pam.d/system-auth
 
 #########################
 ## Harden Shell Access ##
@@ -38,9 +47,8 @@ echo "
 Protocol 2" >> /etc/ssh/sshd_config
 
 # Set session timeout to 15 mins
-echo "
-# Set session timeout
-ClientAliveInterval 15m      # 15 minutes" >> /etc/ssh/sshd_config
+
+sed -i "s/#ClientAliveInterval 0/ClientAliveInterval 15m/" /etc/ssh/sshd_config
 
 # Disable root login via SSH 
 sed -i "s/#PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
@@ -64,7 +72,7 @@ net.ipv6.conf.default.disable_ipv6 = 1" >> /etc/sysctl.conf
 sysctl -p
 
 # Point ntp to time server
-#echo "server Target-Log-Server" >> /etc/ntp.conf
+#echo "server <Target-Log-Server>" >> /etc/ntp.conf
 
 # Enable default firewall
 systemctl start firewalld
