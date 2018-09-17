@@ -46,17 +46,12 @@ echo "###############################################################
 # Disconnect IMMEDIATELY if you are not an authorized user!   #
 ###############################################################" > /etc/motd
 
-# Set SSH Protocol to v2
-echo "
-# Use SSH Protocol 2 Version
-Protocol 2" >> /etc/ssh/sshd_config
-
 # Set session timeout to 15 mins
 echo "
 ClientAliveInterval 15m      # 15 minutes" >> /etc/ssh/sshd_config
 
 # Disable root login via SSH
-sed -i "s/#PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
+sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/" /etc/ssh/sshd_config
 
 # Require users to use ssh keys
 sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/sshd_config

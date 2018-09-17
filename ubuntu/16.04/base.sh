@@ -2,8 +2,6 @@
 ## Must be ran as root
 
 #!/usr/bin/env bash
-# To execute this script run the following as root
-# bash <(curl http://installs.truemark.io/ubuntu/16.04/truemark.sh)
 set -uex
 
 # Setup SSH keys
