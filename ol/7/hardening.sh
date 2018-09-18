@@ -111,6 +111,12 @@ echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>
   <description>VNC Viewer</description>
   <port protocol=\"tcp\" port=\"5601\"/>
   <port protocol=\"udp\" port=\"5601\"/>
+  <port protocol=\"tcp\" port=\"5602\"/>
+  <port protocol=\"udp\" port=\"5602\"/>
+  <port protocol=\"tcp\" port=\"5603\"/>
+  <port protocol=\"udp\" port=\"5603\"/>
+  <port protocol=\"tcp\" port=\"5604\"/>
+  <port protocol=\"udp\" port=\"5604\"/>
   <port protocol=\"tcp\" port=\"5605\"/>
   <port protocol=\"udp\" port=\"5605\"/>
 </service>" > /etc/firewalld/services/vnc-viewer.xml
