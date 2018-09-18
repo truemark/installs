@@ -26,7 +26,7 @@ EOF
 
 pvcreate /dev/sdb1
 vgcreate orasoft /dev/sdb1
-lvcreate -L75G -nu01 orasoft
+lvcreate -L100G -nu01 orasoft
 mkfs.ext4 /dev/orasoft/u01
 mkdir -p /u01
 echo "/dev/mapper/orasoft-u01 /u01 ext4 defaults 1 2" >> /etc/fstab
