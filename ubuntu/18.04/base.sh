@@ -55,8 +55,8 @@ EOL
 ###########################
 
 echo "Acquire {
-        Retries "0";
+        Retries \"0\";
         HTTP {
-                Proxy "http://patchproxy.yleo.us:3128/";
+                Proxy \"http://patchproxy.<target-server>:3128/\";
         };
 };" > /etc/apt/apt.conf.d/02-proxy
