@@ -5,7 +5,7 @@
 ## Setup server to pull updates via the proxy ##
 #################################################
 
-sed -i "s/enableProxy=0/enableProxy=1/" /etc/sysconfig/rhn/up2date
+#sed -i "s/enableProxy=0/enableProxy=1/" /etc/sysconfig/rhn/up2date
 #sed -i "s,httpProxy=,httpProxy=http://patchproxy.<domain>:3128/," /etc/sysconfig/rhn/up2date
 
 #################################################

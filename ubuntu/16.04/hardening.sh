@@ -78,7 +78,7 @@ exit 0" > /etc/rc.local
 
 chmod 755 /etc/rc.local
 
-# Enable default firewall
+# Enable default apparmor
 
 systemctl start apparmor
 systemctl enable apparmor
