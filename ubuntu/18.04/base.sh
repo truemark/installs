@@ -1,4 +1,4 @@
-## TrueMark Ubuntu 18 Hardening
+## TrueMark Ubuntu 18 base installation
 ## Must be ran as root
 
 #!/usr/bin/env bash
@@ -6,17 +6,6 @@
 # To execute this script run the following as root
 # bash <(curl http://installs.truemark.io/ubuntu/18.04/truemark.sh)
 set -uex
-
-# Allow user to sudo without a password
-echo "user    ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/truemark
-
-# Setup vimrc 
-cat > /etc/vim/vimrc.local <<EOL
-set background=dark
-if has("autocmd")
-   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
-EOL
 
 ########################
 ## Setup Shell Access ##
@@ -45,10 +34,6 @@ if has("autocmd")
    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 EOL
-
-####################################################
-## No NR Setup as it's not supported on 18.04 yet ##
-####################################################
 
 ###########################
 ## Configure patch proxy ##

@@ -4,14 +4,11 @@
 #!/usr/bin/env bash
 
 # To execute this script run the following as root
-# bash <(curl http://installs.truemark.io/ubuntu/18.04/truemark.sh)
 set -uex
 
 ##########################################################
 ## Configure syslog to forward to central syslog server ##
 ##########################################################
-# THIS SECTION IS COMMENTED OUT DUE TO THE FACT THAT IT WILL DIFFER PER CLIENT/ENVIRONMENT.
-# THIS SECTION SHOULD BE ADDED TO THE CLIENT'S SETUP SCRIPT OR HARDENING SCRIPT IF THERE IS ONE.
 
 #echo "*.*;auth,authpriv.none @TARGET-SYSLOG-SERVER:514" > /etc/rsyslog.d/51-custom.conf
 
@@ -26,17 +23,18 @@ apt-get update && apt-get upgrade -y
 ## Establish Password Policies ##
 #################################
 
+# Install requisite packages
+apt-get install cracklib-runtime libpam-pwquality -y
+
 # Set password policies
-echo "
-# This section has been added as part of the hardening process.
-# Prevent blank passwords
-auth        sufficient   pam_unix.so likeauth
+# These changes allow the system to remember the last 5 passwords and prevent them from being reused
+sed -i "s/try_first_pass sha512/try_first_pass sha512 remember=5/" /etc/pam.d/common-password
 
-# Remember the last 5 passwords and prevent them from being reused
-password   sufficient    pam_pwhistory.so remember=5 use_authtok
-
-# This section sets retries to 3, minimum length to 10 & that all 4 type classes (Upper/Lower/Digital/Other) are required.
-password        requisite       pam_pwquality.so minlen=8 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1" >> /etc/pam.d/common-password
+# This section sets will require all 4 character type classes (Upper/Lower/Digital/Other)
+sed -i "s/# dcredit = 0/dcredit = -1/" /etc/security/pwquality.conf
+sed -i "s/# ucredit = 0/ucredit = -1/" /etc/security/pwquality.conf
+sed -i "s/# lcredit = 0/lcredit = -1/" /etc/security/pwquality.conf
+sed -i "s/# ocredit = 0/ocredit = -1/" /etc/security/pwquality.conf
 
 #########################
 ## Harden Shell Access ##
@@ -55,7 +53,8 @@ Protocol 2" >> /etc/ssh/sshd_config
 
 # Set session timeout to 15 mins
 echo "
-ClientAliveInterval 15m      # 15 minutes" >> /etc/ssh/sshd_config
+ClientAliveInterval 900      # 15 minutes
+ClientAliveCountMax 0" >> /etc/ssh/sshd_config
 
 # Disable root login via SSH
 sed -i "s/#PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
@@ -86,6 +85,13 @@ exit 0" > /etc/rc.local
 chmod 755 /etc/rc.local
 
 # Enable default apparmor
-
 systemctl start apparmor
 systemctl enable apparmor
+
+# Install and setup default firewall settings
+apt-get install ufw -y
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+echo "y" | ufw enable
+ufw status verbose

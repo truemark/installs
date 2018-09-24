@@ -10,8 +10,7 @@ set -uex
 ## Configure syslog to forward to central syslog server ##
 ##########################################################
 
-#the below is commented out, as it will change per client/environment. 
-#echo "*.*;auth,authpriv.none @<target-server>:514" > /etc/rsyslog.d/51-custom.conf
+#echo "*.*;auth,authpriv.none @<target-server>:514" > /etc/rsyslog.d/51-custom.conf   #Commented out, as it will change per client/environment.
 
 ##########################
 ## Apply Latest Patches ##
@@ -24,17 +23,18 @@ apt-get update && apt-get upgrade -y
 ## Establish Password Policies ##
 #################################
 
+# Install requisite packages
+apt-get install cracklib-runtime libpam-pwquality -y
+
 # Set password policies
-echo "
-# This section has been added as part of the hardening process.
-# Prevent blank passwords
-auth        sufficient   pam_unix.so likeauth
+# These changes allow the system to remember the last 5 passwords and prevent them from being reused
+sed -i "s/try_first_pass sha512/try_first_pass sha512 remember=5/" /etc/pam.d/common-password
 
-# Remember the last 5 passwords and prevent them from being reused
-password   sufficient    pam_pwhistory.so remember=5 use_authtok
-
-# This section sets retries to 3, minimum length to 10 & that all 4 type classes (Upper/Lower/Digital/Other) are required.
-password        requisite       pam_pwquality.so minlen=8 dcredit=-1 ucredit=-1 lcredit=-1 ocredit=-1" >> /etc/pam.d/common-password
+# This section sets will require all 4 character type classes (Upper/Lower/Digital/Other)
+sed -i "s/# dcredit = 0/dcredit = -1/" /etc/security/pwquality.conf
+sed -i "s/# ucredit = 0/ucredit = -1/" /etc/security/pwquality.conf
+sed -i "s/# lcredit = 0/lcredit = -1/" /etc/security/pwquality.conf
+sed -i "s/# ocredit = 0/ocredit = -1/" /etc/security/pwquality.conf
 
 #########################
 ## Harden Shell Access ##
@@ -82,3 +82,11 @@ chmod 755 /etc/rc.local
 
 systemctl start apparmor
 systemctl enable apparmor
+
+# Install and setup default firewall settings
+apt-get install ufw -y
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+echo "y" | ufw enable
+ufw status verbose
