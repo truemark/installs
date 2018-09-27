@@ -31,9 +31,9 @@ EOL
 ## Configure patch proxy ##
 ###########################
 
-echo "Acquire {
-        Retries \"0\";
-        HTTP {
-                Proxy \"http://patchproxy.<target-server>:3128/\";
-        };
-};" > /etc/apt/apt.conf.d/02-proxy
+##echo "Acquire {
+##        Retries \"0\";
+##        HTTP {
+##                Proxy \"http://patchproxy.<target-server>:3128/\";
+##        };
+##};" > /etc/apt/apt.conf.d/02-proxy

@@ -47,14 +47,18 @@ echo "
 Protocol 2" >> /etc/ssh/sshd_config
 
 # Set session timeout to 15 mins
-
-sed -i "s/#ClientAliveInterval 0/ClientAliveInterval 15m/" /etc/ssh/sshd_config
+echo "
+ClientAliveInterval 900      # 15 minutes
+ClientAliveCountMax 0" >> /etc/ssh/sshd_config
 
 # Disable root login via SSH 
 sed -i "s/#PermitRootLogin yes/PermitRootLogin no/" /etc/ssh/sshd_config
 
 # Require users to use ssh keys
 sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/sshd_config
+
+# Set Log level to verbose to capture ssh key fingerprints
+sed -i "s/#LogLevel INFO/LogLevel VERBOSE/" /etc/ssh/sshd_config
 
 # Apply changes to SSH service
 service sshd restart

@@ -48,7 +48,8 @@ echo "###############################################################
 
 # Set session timeout to 15 mins
 echo "
-ClientAliveInterval 15m      # 15 minutes" >> /etc/ssh/sshd_config
+ClientAliveInterval 900      # 15 minutes
+ClientAliveCountMax 0" >> /etc/ssh/sshd_config
 
 # Disable root login via SSH
 sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/" /etc/ssh/sshd_config
