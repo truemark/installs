@@ -57,6 +57,9 @@ sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/" /etc/ssh/sshd_
 # Require users to use ssh keys
 sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/sshd_config
 
+# Set Auth Log level to verbose to capture ssh key fingerprints 
+sed -i "s/#LogLevel INFO/LogLevel VERBOSE/" /etc/ssh/sshd_config
+
 # Apply changes to SSH service
 service sshd restart
 
