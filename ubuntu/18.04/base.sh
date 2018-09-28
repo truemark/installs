@@ -24,6 +24,9 @@ chown -R user:user /home/user/.ssh
 # Allow user to sudo without a password
 echo "user    ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/truemark
 
+# Set root user password
+echo "root:truemark" | chpasswd
+
 # Set the server to MST
 ln -fs /usr/share/zoneinfo/US/Mountain /etc/localtime
 
