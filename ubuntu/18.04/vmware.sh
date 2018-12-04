@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 
+set -x
+
 ###############################################################################
 # This script sets up a number of VMware specific settings
 # This script is safe to re-run on a system where it's been run before.
 # # To execute this script run the following as root
-# bash <(curl http://download.truemark.io/installs/ubuntu/18.04/vmware.sh)
+# bash <(curl http://download.truemark.io/installs/ubuntu/18.04/vmware.sh) > /var/log/tminstall.log 2>&1
 ###############################################################################
 
 if [[ "$(whoami)" != "root" ]]; then
 	echo "Script must be run as root"
 	exit 1
 fi
-
-set -x
 
 apt-get update && apt-get install open-vm-tools -y
 
