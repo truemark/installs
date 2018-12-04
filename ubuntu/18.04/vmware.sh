@@ -4,7 +4,7 @@
 # This script sets up a number of VMware specific settings
 # This script is safe to re-run on a system where it's been run before.
 # # To execute this script run the following as root
-# bash <(curl http://installs.truemark.io/ubuntu/18.04/truemark.sh)
+# bash <(curl http://download.truemark.io/installs/ubuntu/18.04/vmware.sh)
 ###############################################################################
 
 if [[ "$(whoami)" != "root" ]]; then
