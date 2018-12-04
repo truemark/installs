@@ -18,7 +18,7 @@ echo "Executing vmware.sh"
 echo "###############################################################################"
 set -x
 
-apt-get update && apt-get install open-vm-tools netstat -y
+apt-get update && apt-get install open-vm-tools net-tools -y
 
 echo '[Unit]
 Description=Creates SSH host keys if missing
