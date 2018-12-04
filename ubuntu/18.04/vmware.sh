@@ -5,7 +5,7 @@
 # This script is safe to re-run on a system where it's been run before.
 # 
 # To execute this script run the following as root
-# bash <(curl http://download.truemark.io/installs/ubuntu/18.04/vmware.sh) 2>&1 | tee /var/log/tminstall.log
+# bash <(curl http://download.truemark.io/installs/ubuntu/18.04/vmware.sh) 2>&1 | tee -a /var/log/tminstall.log
 ###############################################################################
 
 if [[ "$(whoami)" != "root" ]]; then
