@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -x
-
 ###############################################################################
 # This script sets up a number of VMware specific settings
 # This script is safe to re-run on a system where it's been run before.
@@ -13,6 +11,11 @@ if [[ "$(whoami)" != "root" ]]; then
 	echo "Script must be run as root"
 	exit 1
 fi
+
+echo "###############################################################################"
+echo "Executing vmware.sh"
+echo "###############################################################################"
+set -x
 
 apt-get update && apt-get install open-vm-tools -y
 
