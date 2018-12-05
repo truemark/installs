@@ -19,6 +19,12 @@ echo "Executing docker-ce.sh"
 echo "###############################################################################"
 set -x
 
+# Docker and UFW do not play nice
+if command -v ufw > /dev/null 2>&1; then 
+	echo "y" | ufw disable
+	apt-get remove ufw -y
+fi
+
 cat > /etc/sysctl.d/95-docker.conf <<EOF
 fs.inotify.max_user_watches=524288
 fs.inotify.max_user_instances=16384
