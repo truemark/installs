@@ -21,7 +21,7 @@ set -x
 apt-get update && apt-get install \
 	bash vim screen tmux htop \
 	sysstat dselect dnsutils \
-	wget -y
+	wget strace ntpdate -y
 
 # Allow user to sudo without a password
 echo "user    ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/truemark
