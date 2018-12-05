@@ -105,7 +105,7 @@ cat > /etc/systemd/network/20-dummy0.network <<EOF
 Name=dummy0
 
 [Network]
-Address=169.254.1.1
+Address=169.254.1.1/32
 EOF
 
 echo "dummy" >> /etc/modules
