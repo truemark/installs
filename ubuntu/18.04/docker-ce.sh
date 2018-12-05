@@ -84,6 +84,14 @@ apt-get update &&  apt-get install -y docker-ce apparmor
 
 apt-mark hold docker-ce
 
+## Setup default docker settings for logging and DNS
+cat >> /etc/docker/daemon.json <<EOF
+{
+  "dns": ["169.254.1.1"],
+  "log-driver": "journald"
+}
+EOF
+
 ## Setup the dummy interface used for host services
 
 cat > /etc/systemd/network/10-dummy0.netdev <<EOF
@@ -104,11 +112,24 @@ echo "dummy" >> /etc/modules
 modprobe dummy
 systemctl restart systemd-networkd
 
-## Setup default docker settings
-cat >> /etc/docker/daemon.json <<EOF
-{
-  "log-driver": "journald"
-}
+## Setup dnsmasq
+apt-get install -y dnsutils dnsmasq
+systemctl stop dnsmasq
+
+# This tells dnsmasq not to use resolv.conf and to forward *.consul requests to the local consul daemon
+cat > /etc/dnsmasq.d/local.conf <<EOF
+server=/consul/169.254.1.1#8600
 EOF
 
+# This will prevent overwriting /etc/resolv.conf
+cat >> /etc/default/dnsmasq <<EOF
+DNSMASQ_EXCEPT=lo
+DNSMASQ_INTERFACE=dummy0
+DNSMASQ_OPTS="-z"
+EOF
+
+systemctl enable dnsmasq
+systemctl start dnsmasq
+
+# Restart Docker ... a reboot is recommended
 systemctl restart docker
