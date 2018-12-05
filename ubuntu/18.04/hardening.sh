@@ -55,7 +55,7 @@ sed -i "s/#ClientAliveInterval 0/ClientAliveInterval 900/" /etc/ssh/sshd_config
 sed -i "s/#ClientAliveCountMax 3/ClientAliveCountMax 0/" /etc/ssh/sshd_config
 
 # Disable root login via SSH
-sed -i "s/#PermitRootLogin prohibit-password/#PermitRootLogin no/" /etc/ssh/sshd_config
+sed -i "s/#PermitRootLogin prohibit-password/PermitRootLogin no/" /etc/ssh/sshd_config
 
 # Apply changes to SSH service
 service sshd restart
