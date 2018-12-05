@@ -49,8 +49,5 @@ if [ -f /var/log/authlog ]; then
 	cat /dev/null > /var/log/auth.log
 fi
 
-# Clear history
-history -c
-
 # Shutdown the OS
 shutdown -h now
