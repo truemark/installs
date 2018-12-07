@@ -67,9 +67,9 @@ service sshd restart
 # Disable IPV6
 cat > /etc/sysctl.d/90-disableipv6.conf <<EOF
 # Disabling IPV6
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
+net.ipv6.conf.all.disable_ipv6 = 0
+net.ipv6.conf.default.disable_ipv6 = 0
+net.ipv6.conf.lo.disable_ipv6 = 0
 EOF
 
 # Enable default apparmor
