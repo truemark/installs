@@ -29,9 +29,6 @@ cat > /etc/sysctl.d/95-docker.conf <<EOF
 fs.inotify.max_user_watches=524288
 fs.inotify.max_user_instances=16384
 fs.file-max=5000000
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
 EOF
 
 sysctl -p
